@@ -17,12 +17,6 @@ public:
     int findGoodChip(vector<int> chips) {
         // TODO:
         // 反覆執行下列步驟：
-        
-        // 4. 
-        //
-        // 5. 若 V >= n/2，回傳 A
-        //
-        // 6. 否則刪除 A，對剩下的晶片重複測試
         while (true) {
 
         // 1. 若 chips 中只剩一顆晶片，直接回傳它的索引
