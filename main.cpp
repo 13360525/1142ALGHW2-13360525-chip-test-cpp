@@ -17,21 +17,44 @@ public:
     int findGoodChip(vector<int> chips) {
         // TODO:
         // 反覆執行下列步驟：
-        //
-        // 1. 若 chips 中只剩一顆晶片，直接回傳它的索引
-        //
-        // 2. 令第一顆晶片為候選晶片 A
-        //
-        // 3. 設 V = 0
-        //
-        // 4. 將 A 與其餘晶片逐一互測：
-        //    若 A 說 B 是好的，且 B 說 A 是好的，則 V++
+        
+        // 4. 
         //
         // 5. 若 V >= n/2，回傳 A
         //
         // 6. 否則刪除 A，對剩下的晶片重複測試
+        while (true) {
 
-        return -1; // 請修改
+        // 1. 若 chips 中只剩一顆晶片，直接回傳它的索引
+        if (chips.size() == 1) {
+            return chips[0];
+        }
+        // 2.令第一顆晶片為候選晶片 A
+        int A = chips[0];
+
+        // 3. V = 0(投票數)
+        int V = 0;
+        // 取得 n（注意是剩下的 chips）
+        int n = chips.size();
+
+        // 4. A 跟其他晶片互測
+        for (int i = 1; i < chips.size(); i++) {
+            int B = chips[i];
+            bool A_says_B = report[A][B];
+            bool B_says_A = report[B][A];
+            if (A_says_B && B_says_A) {
+                V++;
+            }
+        }
+
+        if (V >= n / 2) {
+            return A;
+        }
+
+        chips.erase(chips.begin());
+    }
+
+    return -1;
     }
 };
 
